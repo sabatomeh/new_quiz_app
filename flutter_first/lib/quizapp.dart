@@ -96,7 +96,7 @@ class _quizState extends State<quiz> {
           onPrimary: isSelected ? Colors.white : Colors.black,
         ),
         onPressed: () {
-          if (selectedAnswer != null) {
+          if (selectedAnswer == null) {
             if (a.isCorrect) {
               score++;
             }
