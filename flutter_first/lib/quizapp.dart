@@ -26,8 +26,6 @@ class _quizState extends State<quiz> {
               fontSize: 25,
             ),
           ),
-          const SizedBox(height: 32),
-          Text('Question $currentIndex/$listQ.length'),
           _questions(),
           _answerList(),
           _nextButton(),
@@ -153,7 +151,7 @@ class _quizState extends State<quiz> {
     String title = isPassed ? 'Passed' : 'Failed';
     return AlertDialog(
       title: Text(
-        title + '/ score is $score',
+        title + '/ score is $score/${listQ.length.toString()}',
         style:
             TextStyle(color: isPassed ? Colors.greenAccent : Colors.redAccent),
       ),
