@@ -103,11 +103,6 @@ class _quizState extends State<quiz> {
             setState(() {
               selectedAnswer = a;
             });
-          } else {
-            const snackBar = SnackBar(
-              content: Text('You must select an answer!'),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         },
       ),
@@ -133,10 +128,17 @@ class _quizState extends State<quiz> {
           if (isLastQuestion) {
             showDialog(context: context, builder: (_) => _showScore());
           } else {
-            setState(() {
-              selectedAnswer = null;
-              currentIndex++;
-            });
+            if (selectedAnswer == null) {
+              const snackBar = SnackBar(
+                content: Text('You must select an answer!'),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            } else {
+              setState(() {
+                selectedAnswer = null;
+                currentIndex++;
+              });
+            }
           }
         },
       ),
